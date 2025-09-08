@@ -21,3 +21,22 @@
 </Root>
 
 =>Exercise(After Namespace)
+
+<?xml version="1.0"?>
+<Root>
+    <v:product>
+        <v:title>Vehicle</v:title>
+        <v:type>EV Car</v:type>
+    </v:product>
+
+    <c:product>
+        <c:title>T-shirt</c:title>
+        <c:color>Red</c:color>
+    </c:product>
+
+    <f:product>
+        <f:title>Fruit</f:title>
+        <f:name>Orange</f:name>
+    </f:product>
+
+</Root>

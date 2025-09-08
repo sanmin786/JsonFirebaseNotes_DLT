@@ -1,0 +1,69 @@
+{
+    "articles":[
+        {
+            "title":"This is new article 1",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "rating":5
+        },
+        {
+            "title":"This is new article 3",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "rating":5
+        },
+        {
+            "title":"This is new article 5",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "rating":5
+        },
+        {
+            "title":"This is new article 7",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "rating":5
+        }
+    ],
+    "sports":[
+        {
+            "title":"This is new sport 1",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "rating":5
+        },
+        {
+            "title":"This is new sport 3",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "rating":5
+        },
+        {
+            "title":"This is sport 5",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "rating":5
+        },
+        {
+            "title":"This is sport 7",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "rating":5
+        }
+    ],
+    "stories":[
+        {
+            "title":"This is new story 1",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "rating":5
+        },
+        {
+            "title":"This is new story 3",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "rating":5
+        },
+        {
+            "title":"This is storyt 5",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "rating":5
+        },
+        {
+            "title":"This is story 7",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "rating":5
+        }
+    ]
+    
+}
