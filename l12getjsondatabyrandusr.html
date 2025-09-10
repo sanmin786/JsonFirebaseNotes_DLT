@@ -12,10 +12,11 @@
         // console.log(uri);
 
         const xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET",uri,false);
+        xmlhttp.open("GET",uri,false); //false means no synchronize
         xmlhttp.send();
 
         console.log(xmlhttp);
+        
         if(xmlhttp.readyState === 4 && xmlhttp.status === 200){
             result = xmlhttp.responseText;
         }

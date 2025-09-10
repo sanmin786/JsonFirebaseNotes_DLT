@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Request by AJAX - Rand Usr</title>
+    <style type="text/css">
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            width: 300px;
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="display"></div>
+        <button type="button" id="btn">Load Data</button>
+    </div>
+
+    <script type="text/javascript">
+    
+        const getdisplay = document.getElementById('display');
+        const getbtn = document.getElementById('btn');
+
+        getbtn.addEventListener('click',function(){
+            loaddata();
+        });
+        
+        function loaddata(){
+            // console.log('hi');
+            let uri = `https://randomuser.me/api/`;
+            const xmlhttp = new XMLHttpRequest()
+
+            xmlhttp.onreadystatechange = function(){
+                if(xmlhttp.readyState === 4 && xmlhttp.status === 200){
+                    let result = xmlhttp.responseText;
+                    // console.log(result);
+
+                    result = JSON.parse(result);
+                    console.log(result);
+
+                    let html = `
+                    <h3>${result.results[0].name.title} ${result.results[0].name.first} ${result.results[0].name.last}</h3>
+                    <img src = "${result.results[0].picture.large}" />
+                    `;
+                    getdisplay.innerHTML = html;
+
+                }
+            }
+
+            //to check status
+            xmlhttp.onprogress = function(){
+                console.log("On progress = ",xmlhttp.readyState,xmlhttp.status);
+            }
+
+            ////to check status
+            xmlhttp.onload = function(){
+                console.log("On Load = ",xmlhttp.readyState,xmlhttp.status);
+            }
+
+            xmlhttp.open('GET',uri,true);
+            xmlhttp.send();
+
+        }
+
+       
+
+    </script>
+</body>
+</html>
+

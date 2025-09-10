@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Request by AJAX - Rand Usr</title>
+</head>
+<body>
+    <script type="text/javascript">
+    
+        let uri = `https://randomuser.me/api/`;
+
+        // console.log(uri);
+
+        const xmlhttp = new XMLHttpRequest();
+
+        //result = Not OK
+        // xmlhttp.open("GET",uri,false);  //true mean asynchronize
+        // xmlhttp.send();
+
+        //result = OK
+        // xmlhttp.open("GET",uri,true);  //true mean synchronize
+        // xmlhttp.send();
+
+        console.log(xmlhttp);
+
+        xmlhttp.onreadystatechange = function(){
+            // console.log("State Changed = ",xmlhttp.readyState,xmlhttp.status);
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200){
+                let result = xmlhttp.responseText;
+                // console.log(result);
+                result = JSON.parse(result);
+                console.log(result);
+
+                console.log(result.results);
+                console.log(result.results[0].name);
+                console.log(result.results[0].name.title,result.results[0].name.first,result.results[0].name.last);
+
+            }
+        };
+
+        //result = OK
+        // xmlhttp.open("GET",uri,true);  //true mean synchronize
+        // xmlhttp.send();
+
+        //result = OK
+        // xmlhttp.open("GET",uri,false);  //true mean asynchronize
+        // xmlhttp.send();
+
+
+
+    //Note: if use true,
+    // xmlhttp.open("GET",uri,true);  //true mean synchronize
+    //as it goes step by step, need to use xmlhttp.onreadystatechange = function(){};
+    //If not, it will throw errors
+
+    //Note: if use .onreadystatechange,
+    //true will work before and after the function
+    //But false will worl only after the function
+       
+
+    </script>
+</body>
+</html>
+
+<!-- 
+=>xmlhttp.onreadystatechange
+xmlhttp.readyState === 4
+
+0 = UNSENT open() has not been called yet
+1 = OPENED open() has been called
+2 = HEADER_RECEIVED send() has been called and headers and status  are available
+3 = LOADING downloading, responseText hold partial data
+4 = DONE the operation 
+-->
