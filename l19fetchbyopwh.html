@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Request by fetch - Open Weather Map</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const latitude = "3.028841";
+        const logitude = "101.7375241";
+        const key = "7fa361e4c272329a975836d06c099878";
+        let uri = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${logitude}&appid=${key}`;
+        // console.log(uri);
+
+        fetch(uri)
+        .then(response=>response.json())
+        .then(data=>{
+            console.log(data);
+            console.log(data.weather);
+            console.log(data.weather[0].main);
+            console.log(data.weather[0]["main"]);
+
+            console.log(data.wind.speed);
+            console.log(data["wind"]["speed"]);
+            console.log(data.name);
+            console.log(data["name"]);
+
+        }).catch(err=>console.log(err));
+
+    
+
+
+    </script>
+</body>
+</html>

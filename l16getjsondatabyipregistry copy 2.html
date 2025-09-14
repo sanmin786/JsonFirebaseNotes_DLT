@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Request by AJAX - Chuck Norris</title>
+    <style type="text/css">
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            width: 300px;
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="display"></div>
+        <button type="button" id="btn">Click Me</button>
+    </div>
+
+    <script type="text/javascript">
+    
+        const getdisplay = document.getElementById('display');
+        const getbtn = document.getElementById('btn');
+
+        getbtn.addEventListener('click',function(){
+            loaddata();
+        });
+        
+        function loaddata(){
+            // console.log('hi');
+            const key = `32ix8x9hclsocsrl`;
+            let uri = `https://api.ipregistry.co?key=${key}`;
+            const xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.open('GET',uri); //default => true
+            xmlhttp.send();
+
+
+            xmlhttp.onload = function(){
+                let result = xmlhttp.response;
+                // console.log(result);
+
+                result = JSON.parse(result);
+                console.log(result);
+
+                let html = `
+                    <ul>
+                        <li>External IP = ${result.ip}</li>
+                        <li>Current Device = ${result.user_agent.device.name}</li>
+                        <li>Operation System = ${result.user_agent.os.name}</li>
+                        <li>Load By = ${result.user_agent.name}</li>
+                        <li>City = ${result.location.city}</li>
+                        <li>Local Currency = ${result.currency.code}</li>
+                        <li>Time Zone = ${result.time_zone.current_time}</li>
+                    </ul>
+                `;
+
+                getdisplay.innerHTML = html;
+            }
+            
+
+
+        }
+
+       
+
+    </script>
+</body>
+</html>
+
+
+<!-- 
+IP
+
+Local IP
+    (i) Dynamic IP
+    (ii) Fixed IP / Static IP
+
+
+External IP
+    (i) Public IP /Dynamic IP
+    (ii) Fixed IP / Static IP 
+
+    eg, data centers and servers  give static ip address
+-->
+
