@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Request by Axios - IPRegistry</title>
+    <style type="text/css">
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            width: 300px;
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="display"></div>
+        <button type="button" id="btn">Click Me</button>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script type="text/javascript">
+    
+        const getdisplay = document.getElementById('display');
+        const getbtn = document.getElementById('btn');
+
+        getbtn.addEventListener('click',function(){
+            loaddata();
+        });
+        
+        function loaddata(){
+            // console.log('hi');
+            const key = `32ix8x9hclsocsrl`;
+            let url = `https://api.ipregistry.co?key=${key}`;
+
+            axios({
+                method:'GET',
+                url:url
+            }).then((response)=>{
+                console.log(response.data);
+
+                let html = `
+                    <ul>
+                        <li>External IP = ${response.data.ip}</li>
+                        <li>Current Device = ${response.data.user_agent.device.name}</li>
+                        <li>Operation System = ${response.data.user_agent.os.name}</li>
+                        <li>Load By = ${response.data.user_agent.name}</li>
+                        <li>City = ${response.data.location.city}</li>
+                        <li>Local Currency = ${response.data.currency.code}</li>
+                        <li>Time Zone = ${response.data.time_zone.current_time}</li>
+                    </ul>
+                `;
+
+                getdisplay.innerHTML = html;
+            }).catch(err=>{
+                console.log(err);
+            });
+            
+
+
+        }
+
+       
+
+    </script>
+</body>
+</html>
+
+
+<!-- 
+IP
+
+Local IP
+    (i) Dynamic IP
+    (ii) Fixed IP / Static IP
+
+
+External IP
+    (i) Public IP /Dynamic IP
+    (ii) Fixed IP / Static IP 
+
+    eg, data centers and servers  give static ip address
+-->
+

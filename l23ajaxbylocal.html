@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch - Local Jquery Ajax</title>
+   
+</head>
+<body>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        //=>$.ajax()
+
+        // $.ajax({
+        //     method:'',
+        //     url:url,
+        //     dataType:'json' // or text
+        // }).done((data)=>{
+        //     output
+        // }).fail(()=>{
+        //     error
+        // });
+      
+
+        const url = "./l5simpledata.json";
+
+        //Method 1
+        $.ajax({
+            method:"GET",
+            url:url,
+            dataType:'json'
+        }).done((data)=>{
+            // console.log(data);
+            console.log(data.firstname,data.firstname);
+            console.log(data.holiday[0]);
+            console.log(data.qualify[0].subject,data.qualify[0].mark)
+        }).fail(()=>{
+            console.log("Error")
+        });
+
+        //Method 2
+
+        $.ajax({
+            method:"GET",
+            url:url,
+            dataType:'json',
+            success:(getdata)
+        })
+
+        function getdata(data,status,xhr){
+            console.log(data);
+            console.log(typeof data);
+
+            console.log(status); //success
+
+            console.log(xhr); //same as XMLHttprequest we have tried before
+            console.log(xhr.status); //200
+
+
+            // console.log(data.firstname,data.firstname);
+            // console.log(data.holiday[0]);
+            // console.log(data.qualify[0].subject,data.qualify[0].mark)
+        }
+
+        //Method 3 (Short Hand)
+        $.get(url,output);
+
+        function output(data){
+            console.log(data);
+            console.log(data.firstname,data.lastname);
+
+        };
+
+
+        //Method 4
+        $.getJSON(url,{
+            format:'json'
+        }).done((data)=>{
+           console.log(data);
+           console.log(data.firstname,data.lastname);
+           console.log(data.age);
+           console.log(data.passport);
+
+        }).fail(()=>{
+            console.log("error");
+        }).always(function(){
+            console.log("Bye Bye");
+        });
+
+       
+
+    </script>
+</body>
+</html>
+
+
