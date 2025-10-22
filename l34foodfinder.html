@@ -256,6 +256,7 @@
             }
 
         })
+
         //Fetch food by id
         function getfoodbyid(id){
             console.log(id);
@@ -270,6 +271,7 @@
                 const getfood = response.data.meals[0];
                 // console.log(getfood);
 
+                //call already used function to substitute 
                 foodsettertodom(getfood);
 
             }).catch(err=>console.log(err))
